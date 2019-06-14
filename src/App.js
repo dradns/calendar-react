@@ -2,7 +2,20 @@ import _ from 'lodash';
 import React from 'react';
 import './App.css';
 import { Button, Header, Icon, Menu, Card, Image, Grid, Segment, Placeholder} from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
+import {DateTime, Duration, Info, Interval, Settings} from 'luxon';
+
+let curDate = DateTime.local();
+curDate = DateTime.local().minus({months: 1});
+curDate = DateTime.local().minus({years: 1});
+
+console.log(curDate.year);
+console.log(curDate.day + ' its a day');
+console.log(curDate.year + ' its a year');
+console.log(curDate.month + ' its a month');
+console.log(curDate.weekday + ' its a weekday');
+console.log(curDate.daysInMonth + ' its a days in month');
+console.log(curDate.weekNumber + ' its a week number');
 
 function dayWeek(i) {
     let mas = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
@@ -11,44 +24,36 @@ function dayWeek(i) {
 
 function dayMonth(i) {
     let mas = [];
-    for( let j = 1; j < 32; j++){
+    for( let j = 1; j <= curDate.daysInMonth; j++){
         mas.push(j);
     }
     return mas[i];
 }
 
-const dates = _.times(31, i => (
+const dates = _.times(curDate.daysInMonth, i => (
     <Grid.Column key={i} >
         <Button basic color='teal' size='mini' fluid style={{marginTop: '10px'}}>
             {dayMonth(i)}
         </Button>
 
-        <Segment raised>
-            <Placeholder fluid style={{marginTop: '0px'}}>
-                <Placeholder.Header image>
-                    <Placeholder.Line />
-                    <Placeholder.Line />
-                </Placeholder.Header>
-                <Placeholder.Paragraph>
-                    <Placeholder.Line length='medium' />
-                    <Placeholder.Line length='short' />
-                </Placeholder.Paragraph>
-            </Placeholder>
-        </Segment>
+        {/*<Segment raised>*/}
+        {/*    <Placeholder fluid style={{marginTop: '0px'}}>*/}
+        {/*        <Placeholder.Header image>*/}
+        {/*            <Placeholder.Line />*/}
+        {/*            <Placeholder.Line />*/}
+        {/*        </Placeholder.Header>*/}
+        {/*        <Placeholder.Paragraph>*/}
+        {/*            <Placeholder.Line length='medium' />*/}
+        {/*            <Placeholder.Line length='short' />*/}
+        {/*        </Placeholder.Paragraph>*/}
+        {/*    </Placeholder>*/}
+        {/*</Segment>*/}
     </Grid.Column>
 ));
 
 const weekdays = _.times(7, i => (
     <Grid.Column key={i} >
         <Header as='h3' textAlign='center'>{dayWeek(i)}</Header>
-    </Grid.Column>
-));
-
-const createEvent = _.times(7, i => (
-    <Grid.Column key={i} >
-        <Button basic color='teal' size='mini'>
-            Create event
-        </Button>
     </Grid.Column>
 ));
 
