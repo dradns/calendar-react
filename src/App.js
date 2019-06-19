@@ -1,14 +1,13 @@
 import _ from 'lodash';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import { Button, Header, Icon, Menu, Card, Image, Grid, Segment, Placeholder} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import {DateTime, Duration, Info, Interval, Settings} from 'luxon';
 
 let curDate = DateTime.local();
-curDate = DateTime.local().minus({months: 0});
-curDate = DateTime.local().plus({years: 0});
-
+// curDate = DateTime.local().minus({months: 0});
+// curDate = DateTime.local().plus({years: 0});
 // console.log(curDate.day + ' its a day');
 // console.log(curDate.year + ' its a year');
 // console.log(curDate.month + ' its a month');
@@ -19,12 +18,6 @@ curDate = DateTime.local().plus({years: 0});
 function dayWeek(i) {
     let mas = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
     return mas[i];
-}
-
-function monthName() {
-    let mas = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль',
-        'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-    return mas[curDate.month - 1];
 }
 
 function dayMonth(i) {
@@ -39,27 +32,7 @@ function createEvent(){
     alert('so its a createEvent function');
 }
 
-function minusYear(){
-    let i = 1;
-    alert(DateTime.local().minus({year: i}).year);
-}
-
-function plusYear(){
-    let i = 1;
-    alert(DateTime.local().plus({year: i}).year);
-}
-
-function minusMonth(){
-    let i = 1;
-    alert(DateTime.local().minus({month: i}).month);
-}
-
-function plusMonth(){
-    let i = 1;
-    alert(DateTime.local().plus({month: i}).month);
-}
-
-const dates = _.times(curDate.daysInMonth, i => (
+const Dates = () => _.times(curDate.daysInMonth, i => (
     <Grid.Column key={i} >
         <Button basic color='teal' size='mini' fluid style={{marginTop: '10px'}} onClick={createEvent}>
             {dayMonth(i)}
@@ -67,9 +40,8 @@ const dates = _.times(curDate.daysInMonth, i => (
     </Grid.Column>
 ));
 
-const weekdays = _.times(7, i => (
+const Weekdays = () => _.times(7, i => (
     <Grid.Column key={i} >
-        {/*<Header as='h3' textAlign='center'></Header>*/}
         <Segment color='orange' textAlign='center'>{dayWeek(i)}</Segment>
     </Grid.Column>
 ));
@@ -91,11 +63,14 @@ function Years(){
 
     function minus(){
         setDate({date: date.date - 1});
-        console.log(date.date);
+        curDate = curDate.minus({year : 1});
+        console.log(setDate.date);
+        console.log(curDate.year);
     }
 
     function plus(){
-        setDate({date: date.date + 1})
+        setDate({date: date.date + 1});
+        curDate = curDate.plus({year : 1});
     }
 
     return(
@@ -118,43 +93,42 @@ function Months()
         'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 
     function minus(){
-        if (date.date - 1 >= 0){
+        if (date.date > 1){
             setDate({date: date.date - 1});
+            curDate = curDate.minus({month : 1});
         }
-
-        console.log(date.date);
     }
 
     function plus(){
-        if (date.date + 1 < 12){
+        if (date.date < 12){
             setDate({date: date.date + 1});
+            curDate = curDate.plus({month : 1});
         }
-        console.log(date.date);
     }
 
     return(
         <div>
             <Button icon='arrow left' onClick={minus}/>
             <Segment inverted tertiary>
-                {mas[date.date]}
+                {mas[date.date - 1]}
             </Segment>
             <Button icon='arrow right' onClick={plus}/>
         </div>
     )
 }
 
-const GridCalendar = () => (
+const GridCalendar = (props) => (
     <div>
         <LYearRMonth/>
         <Grid columns={7} >
             <Grid.Row style={{marginTop: '20px'}}>
-                {weekdays}
+                <Weekdays />
             </Grid.Row>
         </Grid>
 
         <Grid columns={7} >
             <Grid.Row style={{marginTop: '20px'}}>
-                {dates}
+                <Dates qual={curDate}/>
             </Grid.Row>
         </Grid>
     </div>
