@@ -53,12 +53,45 @@ const dates = _.times(curDate.daysInMonth, i => (
 
 const weekdays = _.times(7, i => (
     <Grid.Column key={i} >
-        <Header as='h3' textAlign='center'>{dayWeek(i)}</Header>
+        {/*<Header as='h3' textAlign='center'></Header>*/}
+        <Segment color='orange' textAlign='center'>{dayWeek(i)}</Segment>
     </Grid.Column>
 ));
 
+const LYearRMonth = () => (
+    <Grid>
+        <Grid.Column floated='left' width={5}>
+            <Years/>
+        </Grid.Column>
+        <Grid.Column floated='right' width={5}>
+            <Months/>
+        </Grid.Column>
+    </Grid>
+);
+
+const Years = () => (
+    <div>
+        <Button icon='arrow left' />
+        <Segment inverted tertiary>
+            2019
+        </Segment>
+        <Button icon='arrow right' />
+    </div>
+);
+
+const Months = () => (
+    <div>
+        <Button icon='arrow left' />
+        <Segment inverted tertiary>
+            June
+        </Segment>
+        <Button icon='arrow right' />
+    </div>
+);
+
 const GridCalendar = () => (
     <div>
+        <LYearRMonth/>
         <Grid columns={7} >
             <Grid.Row style={{marginTop: '20px'}}>
                 {weekdays}
