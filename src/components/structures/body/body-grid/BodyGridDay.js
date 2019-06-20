@@ -25,7 +25,7 @@ const Dates = () => _.times(curDate.daysInMonth, i => (
     </Grid.Column>
 ));
 
-const BodyGrid = () => (
+const BodyGridMonth = () => (
         <Grid columns={7} >
             <Grid.Row style={{marginTop: '20px'}}>
                 <Dates />
@@ -33,4 +33,4 @@ const BodyGrid = () => (
         </Grid>
 );
 
-export default BodyGrid;
+export default BodyGridMonth;

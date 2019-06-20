@@ -1,6 +1,6 @@
 import React from 'react';
 import BodyBar from './body/BodyBar';
-import BodyGrid from './body/BodyGrid';
+import BodyRouterGrid from './body/BodyRouterGrid';
 import {Grid} from "semantic-ui-react";
 
 const Body = () => (
@@ -13,7 +13,7 @@ const Body = () => (
 
         <Grid.Row>
             <Grid.Column width={16}>
-                <BodyGrid />
+                <BodyRouterGrid />
             </Grid.Column>
         </Grid.Row>
     </Grid>

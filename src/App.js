@@ -10,12 +10,3 @@ const App = () => (
 
 export default App;
 
-{/*<div>*/}
-{/*    <Router>*/}
-{/*        <Switch>*/}
-{/*            /!*<Route exact path={"/week"} component={WeekCalendar}/>*!/*/}
-{/*            <Route path={"/month"} component={MonthCalendar}/>*/}
-{/*            /!*<Route exact path={"/year"} component={YearCalendar}/>*!/*/}
-{/*        </Switch>*/}
-{/*    </Router>*/}
-{/*</div>*/}
