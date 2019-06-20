@@ -6,16 +6,16 @@ import {Grid} from "semantic-ui-react";
 
 const Head = () => (
     <Grid celled>
-        <Grid.Row>
-            <Grid.Column width={3}>
+        <Grid.Row >
+            <Grid.Column width={4}>
                 <CurrentCorner />
             </Grid.Column>
 
-            <Grid.Column width={10}>
+            <Grid.Column width={8}>
                 <ButtonPanel />
             </Grid.Column>
 
-            <Grid.Column width={3}>
+            <Grid.Column width={4}>
                 <Switcher />
             </Grid.Column>
         </Grid.Row>
@@ -23,3 +23,4 @@ const Head = () => (
 );
 
 export default Head;
+
