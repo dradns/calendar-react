@@ -1,5 +1,5 @@
-import React from 'react'
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import React from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import BodyGridMonth from "./body-grid/BodyGridMonth";
 import BodyGridDay from "./body-grid/BodyGridDay";
 import BodyGridWeek from "./body-grid/BodyGridWeek";

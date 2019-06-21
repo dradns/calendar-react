@@ -20,7 +20,7 @@ function createEvent(){
 const Dates = () => _.times(curDate.daysInMonth, i => (
     <Grid.Column key={i} >
         <Button basic color='teal' size='mini' fluid style={{marginTop: '10px'}} onClick={createEvent}>
-            {dayMonth(i)}
+            {dayMonth(i) + ' year'}
         </Button>
     </Grid.Column>
 ));
